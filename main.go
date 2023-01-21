@@ -17,10 +17,10 @@ type post struct {
 
 //raw html
 var form = `
-<h1>Post #{{.ID}}</h1>
-<div>{{printf "User %d" .UserID}}</div>
+<h1>Posts #{{.ID}}</h1>
+<div>{{printf "The User 🍾🍾🍾🍾 %d" .UserID}}</div>
 <div>{{printf "Title is %s" .Title}}</div>
-<div>{{printf "Body is  %s" .Body}}</div>`
+<div>{{printf "Body 🍦 is  %s" .Body}}</div>`
 
 //use printf to actually print strings with formatting
 
@@ -56,12 +56,12 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 	_template := template.New("sample")
 	_template.Parse(form)
+
 	_template.Execute(w, item)
 
 }
 
 func main() {
-	http.HandleFunc("/", handler) // route
-
+	http.HandleFunc("/", handler)                // route
 	log.Fatal(http.ListenAndServe(":8080", nil)) // => http://localhost:8080
 }
